@@ -7,6 +7,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
+import java.util.UUID;
 
 @Component
 public class BeerLoader implements CommandLineRunner {
@@ -14,6 +15,9 @@ public class BeerLoader implements CommandLineRunner {
     public static final String BEER_1_UPC = "0631234200036";
     public static final String BEER_2_UPC = "0631234300019";
     public static final String BEER_3_UPC = "0083783375213";
+    public static final UUID BEER_1_UUID = UUID.fromString("e7bd7a37-d392-4074-8ca2-c80ba7f9e5ee");
+    public static final UUID BEER_2_UUID = UUID.fromString("e7bd7a37-d392-4074-8ca2-c80ba7f9e5ee");
+    public static final UUID BEER_3_UUID = UUID.fromString("e7bd7a37-d392-4074-8ca2-c80ba7f9e5ee");
 
     private final BeerRepository beerRepository;
 
@@ -34,7 +38,7 @@ public class BeerLoader implements CommandLineRunner {
                     .beerName("Mango Bobs")
                     .beerStyle("IPA")
                     .quantityToBrew(200)
-                    .minOnhnad(12)
+                    .minOnHand(12)
                     .upc(BEER_1_UPC)
                     .price(new BigDecimal("12.95"))
                     .build()
@@ -45,7 +49,7 @@ public class BeerLoader implements CommandLineRunner {
                         .beerName("Galaxy Cat")
                         .beerStyle("Pale Ale")
                         .quantityToBrew(200)
-                        .minOnhnad(12)
+                        .minOnHand(12)
                         .upc(BEER_2_UPC)
                         .price(new BigDecimal("11.95"))
                         .build()
@@ -56,7 +60,7 @@ public class BeerLoader implements CommandLineRunner {
                             .beerName("No Hammers On The Bar")
                             .beerStyle("Pale Ale")
                             .quantityToBrew(200)
-                            .minOnhnad(12)
+                            .minOnHand(12)
                             .upc(BEER_3_UPC)
                             .price(new BigDecimal("11.95"))
                             .build()

@@ -19,7 +19,7 @@ import org.springframework.restdocs.constraints.ConstraintDescriptions;
 import org.springframework.restdocs.payload.FieldDescriptor;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.util.StringUtils;
-import services.BeerService;
+import guru.springframework.services.BeerService;
 
 import java.math.BigDecimal;
 import java.util.UUID;
