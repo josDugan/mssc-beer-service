@@ -16,6 +16,7 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.http.MediaType;
+import org.springframework.jms.core.JmsTemplate;
 import org.springframework.restdocs.RestDocumentationExtension;
 import org.springframework.restdocs.constraints.ConstraintDescriptions;
 import org.springframework.restdocs.payload.FieldDescriptor;
@@ -49,6 +50,9 @@ class BeerControllerTest {
 
     @Autowired
     ObjectMapper objectMapper;
+
+    @MockBean
+    JmsTemplate jmsTemplate;
 
     @MockBean
     RestTemplateBuilder builder;
