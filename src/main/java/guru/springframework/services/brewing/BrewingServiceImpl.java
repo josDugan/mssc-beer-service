@@ -1,10 +1,11 @@
-package guru.springframework.services;
+package guru.springframework.services.brewing;
 
 import guru.springframework.config.JMSConfig;
 import guru.springframework.domain.Beer;
 import guru.springframework.events.BrewBeerEvent;
 import guru.springframework.mappers.BeerMapper;
 import guru.springframework.respositories.BeerRepository;
+import guru.springframework.services.brewing.BrewingService;
 import guru.springframework.services.inventory.BeerInventoryService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -15,8 +16,8 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Slf4j
-@Service
 @RequiredArgsConstructor
+@Service
 public class BrewingServiceImpl implements BrewingService {
 
     private final BeerRepository beerRepository;

@@ -1,4 +1,4 @@
-package guru.springframework.services;
+package guru.springframework.services.brewing;
 
 public interface BrewingService {
 
