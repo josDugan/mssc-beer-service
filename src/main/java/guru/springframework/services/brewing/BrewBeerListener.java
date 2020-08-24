@@ -1,6 +1,6 @@
 package guru.springframework.services.brewing;
 
-import guru.springframework.config.JMSConfig;
+import guru.springframework.config.JmsConfig;
 import guru.springframework.domain.Beer;
 import guru.springframework.events.BrewBeerEvent;
 import guru.springframework.events.NewInventoryEvent;
@@ -12,6 +12,8 @@ import org.springframework.jms.annotation.JmsListener;
 import org.springframework.jms.core.JmsTemplate;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
+
 @Slf4j
 @RequiredArgsConstructor
 @Service
@@ -20,7 +22,8 @@ public class BrewBeerListener {
     private final BeerRepository beerRepository;
     private final JmsTemplate jmsTemplate;
 
-    @JmsListener(destination = JMSConfig.BREWING_REQUEST_QUEUE)
+    @Transactional
+    @JmsListener(destination = JmsConfig.BREWING_REQUEST_QUEUE)
     public void listen(BrewBeerEvent event) {
         BeerDto beerDto = event.getBeerDto();
 
@@ -32,6 +35,6 @@ public class BrewBeerListener {
 
         log.debug("Brewed beer " + beer.getMinOnHand() + " : QOH: " + beerDto.getQuantityOnHand());
 
-        jmsTemplate.convertAndSend(JMSConfig.NEW_INVENTORY_QUEUE, newInventoryEvent);
+        jmsTemplate.convertAndSend(JmsConfig.NEW_INVENTORY_QUEUE, newInventoryEvent);
     }
 }
