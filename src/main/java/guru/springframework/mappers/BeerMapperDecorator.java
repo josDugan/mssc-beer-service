@@ -1,7 +1,7 @@
 package guru.springframework.mappers;
 
 import guru.springframework.domain.Beer;
-import guru.springframework.web.model.BeerDto;
+import guru.springframework.common.model.BeerDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import guru.springframework.services.inventory.BeerInventoryService;
 

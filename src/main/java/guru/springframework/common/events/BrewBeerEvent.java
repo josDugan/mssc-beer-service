@@ -1,7 +1,7 @@
-package guru.springframework.events;
+package guru.springframework.common.events;
 
 
-import guru.springframework.web.model.BeerDto;
+import guru.springframework.common.model.BeerDto;
 import lombok.NoArgsConstructor;
 
 @NoArgsConstructor

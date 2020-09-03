@@ -1,8 +1,8 @@
 package guru.springframework.services;
 
-import guru.springframework.web.model.BeerDto;
-import guru.springframework.web.model.BeerPagedList;
-import guru.springframework.web.model.BeerStyle;
+import guru.springframework.common.model.BeerDto;
+import guru.springframework.common.model.BeerPagedList;
+import guru.springframework.common.model.BeerStyle;
 import org.springframework.data.domain.PageRequest;
 
 import java.util.UUID;

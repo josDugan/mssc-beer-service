@@ -2,7 +2,7 @@ package guru.springframework.services.brewing;
 
 import guru.springframework.config.JmsConfig;
 import guru.springframework.domain.Beer;
-import guru.springframework.events.BrewBeerEvent;
+import guru.springframework.common.events.BrewBeerEvent;
 import guru.springframework.mappers.BeerMapper;
 import guru.springframework.respositories.BeerRepository;
 import guru.springframework.services.inventory.BeerInventoryService;

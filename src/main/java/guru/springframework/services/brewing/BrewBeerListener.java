@@ -2,10 +2,10 @@ package guru.springframework.services.brewing;
 
 import guru.springframework.config.JmsConfig;
 import guru.springframework.domain.Beer;
-import guru.springframework.events.BrewBeerEvent;
-import guru.springframework.events.NewInventoryEvent;
+import guru.springframework.common.events.BrewBeerEvent;
+import guru.springframework.common.events.NewInventoryEvent;
 import guru.springframework.respositories.BeerRepository;
-import guru.springframework.web.model.BeerDto;
+import guru.springframework.common.model.BeerDto;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.jms.annotation.JmsListener;
