@@ -13,3 +13,17 @@ Learn more about John Thompson and his courses below!
 | Brewery Beer Service | 8080 |
 | Brewery Beer Order Service | 8081 |
 | Brewery Beer Inventory Service | 8082 |
+
+## Docker commands
+Run zipkin for local development:
+```
+docker run -d -p 9411:9411 openzipkin/zipkin
+```
+
+Run default activemq artemis image for local development:
+```
+docker run -it --rm \
+  -p 8161:8161 \
+  -p 61616:61616 \
+  vromero/activemq-artemis
+```
