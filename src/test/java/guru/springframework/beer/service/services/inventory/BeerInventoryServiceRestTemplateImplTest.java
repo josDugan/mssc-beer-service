@@ -1,7 +1,6 @@
 package guru.springframework.beer.service.services.inventory;
 
 import guru.springframework.beer.service.bootstrap.BeerLoader;
-import guru.springframework.beer.service.services.inventory.BeerInventoryService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
