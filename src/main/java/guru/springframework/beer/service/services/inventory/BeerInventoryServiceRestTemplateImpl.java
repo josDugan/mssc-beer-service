@@ -3,6 +3,7 @@ package guru.springframework.beer.service.services.inventory;
 import guru.springframework.beer.service.services.inventory.model.BeerInventoryDto;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.context.annotation.Profile;
@@ -26,9 +27,17 @@ public class BeerInventoryServiceRestTemplateImpl implements BeerInventoryServic
 
     private String beerInventoryServiceHost;
 
+    @Value("${sfg.brewery.beer-inventory-service-user}")
+    private String beerInventoryServiceUser;
+
+    @Value("${sfg.brewery.beer-inventory-service-password")
+    private String beerInventoryServicePassword;
+
     @Autowired
     public BeerInventoryServiceRestTemplateImpl(RestTemplateBuilder restTemplateBuilder) {
-        this.restTemplate = restTemplateBuilder.build();
+        this.restTemplate = restTemplateBuilder
+                .basicAuthentication(beerInventoryServiceUser, beerInventoryServicePassword)
+                .build();
     }
 
     public void setBeerInventoryServiceHost(String beerInventoryServiceHost) {
