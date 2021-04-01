@@ -1,0 +1,47 @@
+version: '3.8'
+
+networks:
+  dbnet:
+    external:
+      name: dbnet
+
+services:
+  jms:
+    image: vromero/activemq-artemis
+    ports:
+      - 8161:8161
+      - 61616:61616
+  zipkin:
+    image: openzipkin/zipkin
+    ports:
+      - 9411:9411
+  mssc-brewery-eureka:
+    image: josdugan/mssc-brewery-eureka
+    ports:
+      - 8761:8761
+  mssc-brewery-config:
+    image: josdugan/mssc-brewery-config
+    ports:
+      - 8888:8888
+    depends_on:
+      - mssc-brewery-eureka
+    environment:
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eurekatestuser:eurekatestpassword@mssc-brewery-eureka:8761/eureka
+      - X_SFG_BREWERY_ENC_KEY=${X_SFG_BREWERY_ENC_KEY}
+  beer-inventory-service:
+    image: josdugan/mssc-beer-inventory-service
+    ports:
+      - 8082:8082
+    networks:
+      - dbnet
+    depends_on:
+      - mssc-brewery-eureka
+      - mssc-brewery-config
+      - jms
+    environment:
+      - SPRING_PROFILES_ACTIVE=localmysql-configserver,local-discovery
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eurekatestuser:eurekatestpassword@mssc-brewery-eureka:8761/eureka
+      - SPRING_ZIPKIN_BASEURL=http://zipkin:9411
+      - SPRING_ARTEMIS_HOST=jms
+      - SPRING_DATASOURCE_URL=jdbc:mysql://brewery-db:3306/beerinventoryservice?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
+#      SPRING_DATASOURCE_URL: jdbc:mysql://host.docker.internal:3306/beerinventoryservice?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
